@@ -229,7 +229,7 @@ class DQNAgent():
         self.discount_factor = 0.99
         self.learning_rate = 0.00025
         self.memory_size = 800000 #20000*50//2
-        self.epsilon = 0.01* 1.0
+        self.epsilon =  1.0
         self.epsilon_min = 0.01*5
         self.explore_step =50000*5 #5000*20
         self.epsilon_decay = (self.epsilon - self.epsilon_min) / self.explore_step
