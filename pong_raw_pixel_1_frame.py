@@ -767,14 +767,3 @@ for e in range(EPISODES):
             if np.mean(scores[-min(10, len(scores)):]) > 18:
                 torch.save(agent.model, "1_frame_Pong_raw_pixel_linear")
                 sys.exit()
-
-f.write("episode:  "+str(e)+"  ave_scores:   "+str(ave_scores / 10.)+"  memory length:  ",
-
-f = open("key.txt", "a")
-i = 1
-e=1212
-while i<20:
-    f.write(str(i)+"\n")
-    f.write("episode:  "+str(e)+"  ave_scores:   ")
-    i +=1 
-f.close()
