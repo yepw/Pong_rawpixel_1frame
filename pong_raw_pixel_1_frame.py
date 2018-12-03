@@ -695,8 +695,8 @@ env = wrap_deepmind(env)
 action_size = env.action_space.n
 print(action_size)
 agent = DQNAgent(action_size)
-PATH = "/content/1_frame_Pong_raw_pixel_linear469.pt"
-agent.model=torch.load(PATH)
+#PATH = "/content/1_frame_Pong_raw_pixel_linear469.pt"
+#agent.model=torch.load(PATH)
 
 scores, episodes = [], []
 
@@ -757,7 +757,7 @@ for e in range(EPISODES):
                 f.write("episode:  "+str(e)+"  ave_scores:   "+str(ave_scores / 10.)+"  memory length:  "+str(agent.memory.tree.n_entries)+ "  epsilon:  "+ str(agent.epsilon)+"\n")
                 f.close()
                 ave_scores = 0
-                PATH = "/content/1_frame_Pong_raw_pixel_linear"+str(470+e)+".pt"
+                PATH = "/content/1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
                 torch.save(agent.model, PATH)
                 
                 
