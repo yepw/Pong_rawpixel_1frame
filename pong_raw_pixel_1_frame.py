@@ -749,7 +749,7 @@ for e in range(EPISODES):
             pylab.savefig("cartpole_dqn.png")
             
             print_counter += 1
-            if print_counter == 1:
+            if print_counter == 10:
                 print_counter = 0
                 print("episode:", e, " ave_scores:", ave_scores / 10., "  memory length:",
                       agent.memory.tree.n_entries, "  epsilon:", agent.epsilon)
@@ -757,7 +757,7 @@ for e in range(EPISODES):
                 f.write("episode:  "+str(e)+"  ave_scores:   "+str(ave_scores / 10.)+"  memory length:  "+str(agent.memory.tree.n_entries)+ "  epsilon:  "+ str(agent.epsilon)+"\n")
                 f.close()
                 ave_scores = 0
-                PATH = "/content/1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
+                PATH = "1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
                 torch.save(agent.model, PATH)
                 
                 
