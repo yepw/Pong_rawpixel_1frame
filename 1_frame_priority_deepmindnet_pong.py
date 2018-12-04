@@ -756,9 +756,9 @@ for e in range(EPISODES):
                 f = open("log.txt", "a")
                 f.write("episode:  "+str(e)+"  ave_scores:   "+str(ave_scores / 10.)+"  memory length:  "+str(agent.memory.tree.n_entries)+ "  epsilon:  "+ str(agent.epsilon)+"\n")
                 f.close()
-                np.savetxt('/content/1_frame_priority_deepmindnet_pong', scores, fmt='%.2f')
+                np.savetxt('1_frame_priority_deepmindnet_pong', scores, fmt='%.2f')
                 ave_scores = 0
-                PATH = "/content/1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
+                PATH = "1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
                 torch.save(agent.model, PATH)
                 
                 
