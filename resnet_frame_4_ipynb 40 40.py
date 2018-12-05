@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1Qqga-JdL93SxXHkWX6uDTMr4OIEZHsKi
 """
 
-#'''
+'''
 !pip install gym
 !pip install numpy
 !pip install gym[atari]
@@ -16,7 +16,7 @@ Original file is located at
 !pip install tqdm
 !pip install Pillow
 !pip install opencv-python
-#'''
+'''
 
 import random
 import numpy as np
@@ -929,9 +929,7 @@ for e in range(EPISODES):
             scores.append(score)
             ave_scores += score
             episodes.append(e)
-            pylab.plot(episodes, scores, 'b')
-            pylab.savefig("cartpole_dqn.png")
-            np.savetxt('/content/4_frame_priority_deepmindnet_pong', scores, fmt='%.2f')
+            
             print_counter += 1
             if print_counter == 10:
                 print_counter = 0
@@ -940,13 +938,16 @@ for e in range(EPISODES):
                 f = open("log.txt", "a")
                 f.write("episode:  "+str(e)+"  ave_scores:   "+str(ave_scores / 10.)+"  memory length:  "+str(agent.memory.tree.n_entries)+ "  epsilon:  "+ str(agent.epsilon)+"\n")
                 f.close()
+                pylab.plot(episodes, scores, 'b')
+                pylab.savefig("resnet_frame_4_ipynb_40_40.png")
+                np.savetxt('resnet_frame_4_40_40_npsave', scores, fmt='%.2f')
                 ave_scores = 0
-                PATH = "/content/1_frame_Pong_raw_pixel_linear"+str(e)+".pt"
+                PATH = "resnet_frame_4_ipynb_40_40_"+str(e)+".pt"
                 torch.save(agent.model, PATH)
 
 
             # if the mean of scores of last 10 episode is bigger than 10
             # stop training
             if np.mean(scores[-min(10, len(scores)):]) > 18:
-                torch.save(agent.model, "1_frame_Pong_raw_pixel_linear_ultimate")
+                torch.save(agent.model, "resnet_frame_4_ipynb_40_40_ultimate")
                 sys.exit()
